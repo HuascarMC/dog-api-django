@@ -27,7 +27,7 @@ class GetAllPuppiesTest(TestCase):
         response = client.get(reverse('get_post_puppies'))
         # Get objects from DB.
         puppies = Puppy.objects.all()
-        # Check if there's many objects returned.
+        # Converts puppies data into puppy objects.
         serializer = PuppySerializer(puppies, many=True)
         # Check if DB query equals API query.
         self.assertEqual(response.data, serializer.data)
