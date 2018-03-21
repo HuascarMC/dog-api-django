@@ -12,7 +12,8 @@ def get_delete_update_puppy(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        return Respone({})
+        serializer = PuppySerializer(puppy)
+        return Response(serializer.data)
     elif request.method == 'DELETE':
         return Response({})
     elif request.method == 'PUT':
