@@ -4,7 +4,7 @@ from ..models import Puppy
 class PuppyTest(TestCase):
     # Test module for Puppy model
 
-    def setup(self):
+    def setUp(self):
         Puppy.objects.create(
             name='Cooper', age=3, breed='Golden Retriever', color='Brown')
         Puppy.objects.create(
