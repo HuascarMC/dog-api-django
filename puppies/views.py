@@ -14,9 +14,16 @@ def get_delete_update_puppy(request, pk):
     if request.method == 'GET':
         serializer = PuppySerializer(puppy)
         return Response(serializer.data)
-    elif request.method == 'DELETE':
-        return Response({})
+
     elif request.method == 'PUT':
+            serializer = PuppySerializer(puppy, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    elif request.method == 'DELETE':
         return Response({})
 
 @api_view(['GET', 'POST'])
