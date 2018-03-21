@@ -8,7 +8,7 @@ from .serializers import PuppySerializer
 def get_delete_update_puppy(request, pk):
     try:
         puppy = Puppy.objects.get(pk=pk)
-    except Puppy = Puppy.DoesNotExist:
+    except Puppy.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
